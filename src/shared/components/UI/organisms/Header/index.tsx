@@ -9,6 +9,8 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { Container } from "../../../templates";
+import Link from "next/link";
+import { pageUrl } from "../../../../constants/pageUrl";
 
 const Header: React.FC = () => (
   // <Box as="section" pb={{ base: "12", md: "24" }}>
@@ -33,8 +35,12 @@ const Header: React.FC = () => (
               ))}
             </ButtonGroup>
             <HStack spacing="3">
-              <Button variant="ghost">Sign in</Button>
-              <Button variant="primary">Sign up</Button>
+              <Button variant="ghost">
+                <Link href={`${pageUrl.SIGN_IN}`}>Sign in</Link>
+              </Button>
+              <Button variant="ghost">
+                <Link href={`${pageUrl.SIGN_UP}`}>Sign up</Link>
+              </Button>
             </HStack>
           </Flex>
         </HStack>
