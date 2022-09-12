@@ -10,8 +10,9 @@ const theme = extendTheme({
       400: "#EE757E",
       500: "#E52B39",
     },
-    black: {
+    gray: {
       800: "#1E1E1E",
+      900: "0F0F0F",
     },
   },
   fonts: {
