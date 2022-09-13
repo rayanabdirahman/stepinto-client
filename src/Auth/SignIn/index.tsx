@@ -1,8 +1,10 @@
 import React from "react";
 import { AuthTemplate } from "../../shared/components/templates";
 import { SocialAuth } from "../../shared/components/UI/organisms";
-import { Divider } from "../../shared/components/UI/atoms";
+import { Divider, Link } from "../../shared/components/UI/atoms";
 import SignInForm from "./components/SignInForm";
+import { pageUrl } from "../../shared/domain/constants/pageUrl";
+import { Center } from "@chakra-ui/react";
 
 const SignIn: React.FC = () => (
   <AuthTemplate title="Sign in" subTitle="Enter your credentials to continue">
@@ -17,6 +19,9 @@ const SignIn: React.FC = () => (
         }, 1000);
       }}
     />
+    <Center>
+      <Link href={pageUrl.SIGN_UP}>Don&#39;t have an account? Sign up</Link>
+    </Center>
   </AuthTemplate>
 );
 

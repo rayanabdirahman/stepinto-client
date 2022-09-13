@@ -1,8 +1,10 @@
 import React from "react";
 import { AuthTemplate } from "../../shared/components/templates";
 import { SocialAuth } from "../../shared/components/UI/organisms";
-import { Divider } from "../../shared/components/UI/atoms";
+import { Divider, Link } from "../../shared/components/UI/atoms";
 import SignUpForm from "./components/SignUpForm";
+import { Center } from "@chakra-ui/react";
+import { pageUrl } from "../../shared/domain/constants/pageUrl";
 
 const SignUp: React.FC = () => (
   <AuthTemplate
@@ -20,6 +22,9 @@ const SignUp: React.FC = () => (
         }, 1000);
       }}
     />
+    <Center>
+      <Link href={pageUrl.SIGN_IN}>Already have an account? Sign in</Link>
+    </Center>
   </AuthTemplate>
 );
 

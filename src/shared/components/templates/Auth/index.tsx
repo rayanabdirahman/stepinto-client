@@ -20,7 +20,7 @@ const AuthTemplate: React.FC<Props> = ({
   subTitle,
   children,
 }: Props) => (
-  <Box as="section" h="100vh" bg="black" pt={{ base: 4, md: 4 }}>
+  <Box as="section" h="100vh" bg="black">
     <Container>
       <HStack spacing="10" justify="space-between">
         <Logo type="light" />
