@@ -2,7 +2,6 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { pageUrl } from "../../../../domain/constants/pageUrl";
-import Button from "../Button";
 
 type Props = {
   type?: "dark" | "light";
@@ -10,7 +9,7 @@ type Props = {
 
 const Logo: React.FC<Props> = ({ type }) => (
   <Link href={pageUrl.HOME}>
-    <Button variant="link">
+    <a>
       <Image
         src={
           type === "light" ? "/images/logo-white.svg" : "/images/logo-black.svg"
@@ -19,7 +18,7 @@ const Logo: React.FC<Props> = ({ type }) => (
         width={88}
         height={72}
       />
-    </Button>
+    </a>
   </Link>
 );
 
