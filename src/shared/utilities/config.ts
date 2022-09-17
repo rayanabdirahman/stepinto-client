@@ -1,11 +1,14 @@
-const BASE_URL = "http://localhost:8080";
+const API_URL =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:8000/api/v1"
+    : "http://www.trystepinto.com/api/v1";
 
 interface IConfig {
-  BASE_URL: string;
+  API_URL: string;
 }
 
 const Config: IConfig = {
-  BASE_URL,
+  API_URL,
 };
 
 export default Config;

@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { removeStoredAuthToken } from "./authToken";
 import Config from "./config";
 
-interface IApi {
+interface IAPIHelper {
   get: (args: any) => Promise<unknown>;
   post: (args: any) => Promise<unknown>;
   put: (args: any) => Promise<unknown>;
@@ -12,7 +12,7 @@ interface IApi {
 }
 
 const defaults = {
-  baseURL: process.env.API_URL || Config.BASE_URL,
+  baseURL: process.env.API_URL || Config.API_URL,
   headers: () => ({
     "Content-Type": "application/json",
   }),
@@ -25,7 +25,7 @@ const defaults = {
   },
 };
 
-const APIHelper = (method: string, url: string, variables?: any) => {
+const API = (method: string, url: string, variables?: any) => {
   const router = useRouter();
 
   return new Promise((resolve, reject) => {
@@ -55,12 +55,12 @@ const APIHelper = (method: string, url: string, variables?: any) => {
   });
 };
 
-const API: IApi = {
-  get: (...args) => APIHelper("get", ...args),
-  post: (...args) => APIHelper("post", ...args),
-  put: (...args) => APIHelper("put", ...args),
-  patch: (...args) => APIHelper("patch", ...args),
-  delete: (...args) => APIHelper("delete", ...args),
+const APIHelper: IAPIHelper = {
+  get: (...args) => API("get", ...args),
+  post: (...args) => API("post", ...args),
+  put: (...args) => API("put", ...args),
+  patch: (...args) => API("patch", ...args),
+  delete: (...args) => API("delete", ...args),
 };
 
-export default API;
+export default APIHelper;

@@ -15,7 +15,7 @@ const SignUpForm: React.FC<Props> = ({ formik }) => {
   return (
     <Stack spacing={4}>
       <Input
-        label="Full name"
+        label="Name"
         placeholder='e.g. "John Smith"'
         isInvalid={!!formik.errors.name && formik.touched.name}
         errorMsg={formik.errors.name}

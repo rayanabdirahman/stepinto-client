@@ -3,6 +3,7 @@ import { Component, ComponentType } from "react";
 
 interface IProps {
   initialValues: any;
+  validationSchema: any;
   onSubmit: (
     values: any,
     formikHelpers: FormikHelpers<any>
@@ -15,6 +16,7 @@ export default function withFormik(WrappedComponent: ComponentType<any>) {
       return (
         <Formik
           initialValues={this.props.initialValues}
+          validationSchema={this.props.validationSchema}
           onSubmit={this.props.onSubmit}
         >
           {(formik) => (
