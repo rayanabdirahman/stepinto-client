@@ -1,10 +1,9 @@
-import React from "react";
 import * as Yup from "yup";
 import { Center } from "@chakra-ui/react";
 import { AuthTemplate } from "../../shared/components/templates";
 import { SocialAuth } from "../../shared/components/UI/organisms";
 import { Divider, Link } from "../../shared/components/UI/atoms";
-import SignInForm from "./components/SignInForm";
+import SignInForm from "./SignInForm";
 import { pageUrl } from "../../shared/domain/constants/pageUrl";
 import APIHelper from "../../shared/utilities/apiHelper";
 import { ISignInModel } from "../../shared/domain/interfaces/auth";
@@ -22,9 +21,14 @@ const SignIn: React.FC = () => {
     values: ISignInModel,
     actions: FormikHelpers<any>
   ) => {
-    const response = await APIHelper.post("/accounts/auth/signin");
-    alert(JSON.stringify(response, null, 2));
-    actions.setSubmitting(false);
+    try {
+      const response = await APIHelper.post("/accounts/auth/signin", values);
+      console.log(JSON.stringify(response, null, 2));
+      actions.setSubmitting(false);
+    } catch (e) {
+      console.log(e);
+      actions.setSubmitting(false);
+    }
   };
   return (
     <AuthTemplate title="Sign in" subTitle="Enter your credentials to continue">
