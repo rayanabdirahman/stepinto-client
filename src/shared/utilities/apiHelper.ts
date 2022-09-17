@@ -1,14 +1,13 @@
 import axios from "axios";
-import { useRouter } from "next/router";
 import { removeStoredAuthToken } from "./authToken";
 import Config from "./config";
 
 interface IAPIHelper {
-  get: (args: any) => Promise<unknown>;
-  post: (args: any) => Promise<unknown>;
-  put: (args: any) => Promise<unknown>;
-  patch: (args: any) => Promise<unknown>;
-  delete: (args: any) => Promise<unknown>;
+  get: (...args: [string, any]) => Promise<unknown>;
+  post: (...args: [string, any]) => Promise<unknown>;
+  put: (...args: [string, any]) => Promise<unknown>;
+  patch: (...args: [string, any]) => Promise<unknown>;
+  delete: (...args: [string, any]) => Promise<unknown>;
 }
 
 const defaults = {
@@ -25,9 +24,7 @@ const defaults = {
   },
 };
 
-const API = (method: string, url: string, variables?: any) => {
-  const router = useRouter();
-
+function API(method: string, url: string, variables?: any) {
   return new Promise((resolve, reject) => {
     axios({
       url: `${defaults.baseURL}${url}`,
@@ -41,11 +38,10 @@ const API = (method: string, url: string, variables?: any) => {
       },
       (error) => {
         if (error.response) {
-          if (error.response.data.error.code === "INVALID_TOKEN") {
+          if (error.response.data.code === "INVALID_TOKEN") {
             removeStoredAuthToken();
-            router.push("/auth/signin");
           } else {
-            reject(error.response.data.error);
+            reject(error.response.data.message);
           }
         } else {
           reject(defaults.error);
@@ -53,7 +49,7 @@ const API = (method: string, url: string, variables?: any) => {
       }
     );
   });
-};
+}
 
 const APIHelper: IAPIHelper = {
   get: (...args) => API("get", ...args),
