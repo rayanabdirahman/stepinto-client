@@ -8,6 +8,7 @@ import { pageUrl } from "../../shared/domain/constants/pageUrl";
 import APIHelper from "../../shared/utilities/apiHelper";
 import { ISignInModel } from "../../shared/domain/interfaces/auth";
 import { FormikHelpers } from "formik";
+import useStore from "../../shared/store";
 
 const SignInValidationSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Email required"),
@@ -17,6 +18,7 @@ const SignInValidationSchema = Yup.object().shape({
 });
 
 const SignIn: React.FC = () => {
+  const store = useStore((state) => state.user);
   const onSubmit = async (
     values: ISignInModel,
     actions: FormikHelpers<any>
