@@ -1,10 +1,10 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { removeStoredAuthToken } from "./authToken";
 import Config from "./config";
 
-interface IAPIHelper {
+interface IAxiosHelper {
   get: (...args: [string, any]) => Promise<unknown>;
-  post: (...args: [string, any]) => Promise<unknown>;
+  post: (...args: [string, any]) => Promise<AxiosResponse<any, any>>;
   put: (...args: [string, any]) => Promise<unknown>;
   patch: (...args: [string, any]) => Promise<unknown>;
   delete: (...args: [string, any]) => Promise<unknown>;
@@ -24,7 +24,11 @@ const defaults = {
   },
 };
 
-function API(method: string, url: string, variables?: any) {
+function API(
+  method: string,
+  url: string,
+  variables?: any
+): Promise<AxiosResponse<any, any>> {
   return new Promise((resolve, reject) => {
     axios({
       url: `${defaults.baseURL}${url}`,
@@ -51,7 +55,7 @@ function API(method: string, url: string, variables?: any) {
   });
 }
 
-const APIHelper: IAPIHelper = {
+const axiosHelper: IAxiosHelper = {
   get: (...args) => API("get", ...args),
   post: (...args) => API("post", ...args),
   put: (...args) => API("put", ...args),
@@ -59,4 +63,4 @@ const APIHelper: IAPIHelper = {
   delete: (...args) => API("delete", ...args),
 };
 
-export default APIHelper;
+export default axiosHelper;
