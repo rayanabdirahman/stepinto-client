@@ -4,12 +4,10 @@ import {
   Box,
   Center,
   Stack,
-  Alert,
-  AlertIcon,
 } from "@chakra-ui/react";
 import React from "react";
 import Container from "../Container";
-import { Heading, Logo, Text } from "../../UI/atoms";
+import { Heading, Logo, Text, Alert } from "../../UI/atoms";
 
 type Props = {
   title: string;
@@ -32,12 +30,7 @@ const AuthTemplate: React.FC<Props> = ({
 
       <Center>
         <Stack spacing={6}>
-          {errorMessage && (
-            <Alert status="error">
-              <AlertIcon />
-              {errorMessage}
-            </Alert>
-          )}
+          {errorMessage && <Alert status="error">{errorMessage}</Alert>}
           <Box
             w="md"
             p={10}
