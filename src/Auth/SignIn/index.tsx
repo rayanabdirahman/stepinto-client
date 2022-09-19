@@ -5,10 +5,8 @@ import { SocialAuth } from "../../shared/components/UI/organisms";
 import { Divider, Link } from "../../shared/components/UI/atoms";
 import SignInForm from "./SignInForm";
 import { pageUrl } from "../../shared/domain/constants/pageUrl";
-import APIHelper from "../../shared/utilities/apiHelper";
-import { ISignInModel } from "../../shared/domain/interfaces/auth";
-import { FormikHelpers } from "formik";
 import useStore from "../../shared/store";
+import useSignIn from "./useSignIn";
 
 const SignInValidationSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Email required"),
@@ -18,22 +16,16 @@ const SignInValidationSchema = Yup.object().shape({
 });
 
 const SignIn: React.FC = () => {
-  const store = useStore((state) => state.user);
-  const onSubmit = async (
-    values: ISignInModel,
-    actions: FormikHelpers<any>
-  ) => {
-    try {
-      const response = await APIHelper.post("/accounts/auth/signin", values);
-      console.log(JSON.stringify(response, null, 2));
-      actions.setSubmitting(false);
-    } catch (e) {
-      console.log(e);
-      actions.setSubmitting(false);
-    }
-  };
+  // const store = useStore((state) => state.session.user);
+
+  const { onSubmit, errorMessage } = useSignIn();
+
   return (
-    <AuthTemplate title="Sign in" subTitle="Enter your credentials to continue">
+    <AuthTemplate
+      title="Sign in"
+      subTitle="Enter your credentials to continue"
+      errorMessage={errorMessage}
+    >
       <SocialAuth onGoogleAuth={() => console.log("google auth")} />
       <Divider withText="or" />
       <SignInForm
