@@ -3,12 +3,14 @@ import { removeStoredAuthToken } from "./authToken";
 import Config from "./config";
 
 interface IAxiosHelper {
-  get: (...args: [string, any]) => Promise<unknown>;
+  get: (...args: [string, any?]) => Promise<unknown>;
   post: (...args: [string, any]) => Promise<AxiosResponse<any, any>>;
   put: (...args: [string, any]) => Promise<unknown>;
   patch: (...args: [string, any]) => Promise<unknown>;
   delete: (...args: [string, any]) => Promise<unknown>;
 }
+
+export const axiosInstance = axios.create({ withCredentials: true });
 
 const defaults = {
   baseURL: process.env.API_URL || Config.API_URL,
@@ -30,7 +32,7 @@ function API(
   variables?: any
 ): Promise<AxiosResponse<any, any>> {
   return new Promise((resolve, reject) => {
-    axios({
+    axiosInstance({
       url: `${defaults.baseURL}${url}`,
       method,
       headers: defaults.headers(),
