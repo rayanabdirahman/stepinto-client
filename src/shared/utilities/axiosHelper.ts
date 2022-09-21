@@ -3,11 +3,11 @@ import { removeStoredAuthToken } from "./authToken";
 import Config from "./config";
 
 interface IAxiosHelper {
-  get: (...args: [string, any?]) => Promise<unknown>;
+  get: (...args: [string, any?]) => Promise<AxiosResponse<any, any>>;
   post: (...args: [string, any]) => Promise<AxiosResponse<any, any>>;
-  put: (...args: [string, any]) => Promise<unknown>;
-  patch: (...args: [string, any]) => Promise<unknown>;
-  delete: (...args: [string, any]) => Promise<unknown>;
+  put: (...args: [string, any]) => Promise<AxiosResponse<any, any>>;
+  patch: (...args: [string, any]) => Promise<AxiosResponse<any, any>>;
+  delete: (...args: [string, any]) => Promise<AxiosResponse<any, any>>;
 }
 
 export const axiosInstance = axios.create({ withCredentials: true });

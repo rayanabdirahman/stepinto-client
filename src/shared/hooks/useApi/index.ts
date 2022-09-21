@@ -1,7 +1,8 @@
-import mutation, { MutaionReturnType, MutaionTuple } from "./useMutation";
+import mutation, { MutaionReturnType, MutaionTuple } from "./mutation";
+import query, { QueryReturnType, QueryTuple } from "./query";
 
 interface IProps {
-  // get: (...args: [string, any]) => Promise<unknown>;
+  get: (...args: QueryTuple) => QueryReturnType;
   post: (...args: MutaionTuple) => MutaionReturnType;
   // put: (...args: [string, any]) => Promise<unknown>;
   // patch: (...args: [string, any]) => Promise<unknown>;
@@ -9,6 +10,7 @@ interface IProps {
 }
 
 const useApi: IProps = {
+  get: (...args) => query(...args),
   post: (...args) => mutation("post", ...args),
 };
 
