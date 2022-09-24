@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   Box,
   Button,
@@ -19,17 +19,12 @@ import { useRouter } from "next/router";
 const Navbar: React.FC = () => {
   const { user } = useUser();
   const { pathname } = useRouter();
-  const [isVisible, setVisibility] = useState(true);
 
-  useEffect(() => {
-    function checkPathname() {
-      const isNotAuthPage = !pathname.split("/").includes("auth");
-      setVisibility(isNotAuthPage);
-    }
-    checkPathname();
-  }, [pathname]);
+  if (pathname.split("/").includes("auth")) {
+    return <></>;
+  }
 
-  return isVisible ? (
+  return (
     <Box as="section">
       <Box
         as="nav"
@@ -69,7 +64,7 @@ const Navbar: React.FC = () => {
         </Container>
       </Box>
     </Box>
-  ) : null;
+  );
 };
 
 export default Navbar;
