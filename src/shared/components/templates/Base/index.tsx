@@ -1,15 +1,9 @@
 import React from "react";
-import { Header } from "../../UI/organisms";
 
 type Props = {
   children: React.ReactNode;
 };
 
-const BaseTemplate: React.FC<Props> = ({ children }: Props) => (
-  <>
-    <Header />
-    {children}
-  </>
-);
+const BaseTemplate: React.FC<Props> = ({ children }: Props) => <>{children}</>;
 
 export default BaseTemplate;

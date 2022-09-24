@@ -25,8 +25,8 @@ const SignUp: React.FC = () => {
       subTitle="Register your details to continue"
       errorMessage={errorMessage}
     >
-      <SocialAuth onGoogleAuth={() => console.log("google auth")} />
-      <Divider withText="or" />
+      {/* <SocialAuth onGoogleAuth={() => console.log("google auth")} />
+      <Divider withText="or" /> */}
       <SignUpForm
         initialValues={{ name: "", email: "", password: "" }}
         validationSchema={SignUpValidationSchema}

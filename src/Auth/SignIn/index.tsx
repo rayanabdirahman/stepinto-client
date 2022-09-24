@@ -26,8 +26,8 @@ const SignIn: React.FC = () => {
       subTitle="Enter your credentials to continue"
       errorMessage={errorMessage}
     >
-      <SocialAuth onGoogleAuth={() => console.log("google auth")} />
-      <Divider withText="or" />
+      {/* <SocialAuth onGoogleAuth={() => console.log("google auth")} />
+      <Divider withText="or" /> */}
       <SignInForm
         initialValues={{ email: "", password: "" }}
         validationSchema={SignInValidationSchema}
