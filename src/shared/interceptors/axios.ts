@@ -13,6 +13,6 @@ axiosInstance.interceptors.response.use(
         return axiosInstance(error.config);
       }
     }
-    return error;
+    return Promise.reject(error);
   }
 );
