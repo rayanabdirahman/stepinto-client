@@ -21,7 +21,7 @@ const Navbar: React.FC = () => {
   const { pathname } = useRouter();
 
   if (pathname.split("/").includes("auth")) {
-    return <></>;
+    return null;
   }
 
   return (
