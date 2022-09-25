@@ -20,7 +20,7 @@ const Navbar: React.FC = () => {
   const { user } = useUser();
   const { pathname } = useRouter();
 
-  if (pathname.split("/").includes("auth")) {
+  if (pathname.split("/").includes("auth") || !user) {
     return null;
   }
 
