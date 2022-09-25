@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
+import { Image } from "@chakra-ui/react";
 import { pageUrl } from "../../../../domain/constants/pageUrl";
 
 type Props = {
@@ -15,8 +15,6 @@ const Logo: React.FC<Props> = ({ type }) => (
           type === "light" ? "/images/logo-white.svg" : "/images/logo-black.svg"
         }
         alt="Vercel Logo"
-        width={88}
-        height={72}
       />
     </a>
   </Link>

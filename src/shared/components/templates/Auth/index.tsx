@@ -24,7 +24,7 @@ const AuthTemplate: React.FC<Props> = ({
 }: Props) => (
   <Box as="section" h="100vh" bg="black">
     <Container>
-      <HStack spacing="10" justify="space-between">
+      <HStack pt={10} pb={10} spacing="10" justify="space-between">
         <Logo type="light" />
       </HStack>
 
