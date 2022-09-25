@@ -29,7 +29,7 @@ const Navbar: React.FC = () => {
       <Box
         as="nav"
         bg="bg-surface"
-        boxShadow={useColorModeValue("sm", "sm-dark")}
+        // boxShadow={useColorModeValue("sm", "sm-dark")}
       >
         <Container>
           <HStack spacing="10" justify="space-between" alignItems="center">
@@ -38,7 +38,7 @@ const Navbar: React.FC = () => {
               <InputGroup pr={6}>
                 <InputLeftElement
                   pointerEvents="none"
-                  children={<IoSearch color="gray.300" />}
+                  // children={<IoSearch color="gray.300" />}
                 />
                 <Input type="tel" placeholder="Search" />
               </InputGroup>
