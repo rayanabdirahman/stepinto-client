@@ -22,6 +22,7 @@ const SignIn: React.FC = () => {
 
   return (
     <AuthTemplate
+      metaTitle="Sign in"
       title="Sign in"
       subTitle="Enter your credentials to continue"
       errorMessage={errorMessage}

@@ -21,6 +21,7 @@ const SignUp: React.FC = () => {
 
   return (
     <AuthTemplate
+      metaTitle="Sign up"
       title="Let's get started!"
       subTitle="Register your details to continue"
       errorMessage={errorMessage}
