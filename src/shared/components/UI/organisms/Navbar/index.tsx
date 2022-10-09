@@ -2,6 +2,7 @@ import React from "react";
 import {
   Box,
   Button,
+  Center,
   Flex,
   HStack,
   Input,
@@ -13,42 +14,38 @@ import useUser from "../../../../hooks/useUser";
 import { Container } from "../../../templates";
 import { Logo } from "../../atoms";
 import Menu from "./Menu";
-import { IoSearch } from "react-icons/io5";
+import { IoSearch, IoNotificationsOutline } from "react-icons/io5";
 import { useRouter } from "next/router";
 
 const Navbar: React.FC = () => {
   const { user } = useUser();
   const { pathname } = useRouter();
+  const boxShadowColor = useColorModeValue("sm", "sm-dark");
 
   if (pathname.split("/").includes("auth") || !user) {
     return null;
   }
 
   return (
-    <Box as="section">
-      <Box
-        as="nav"
-        bg="bg-surface"
-        // boxShadow={useColorModeValue("sm", "sm-dark")}
-      >
+    <Box as="section" py={4} boxShadow={boxShadowColor}>
+      <Box as="nav" bg="bg-surface">
         <Container>
           <HStack spacing="10" justify="space-between" alignItems="center">
             <Logo />
-            <Flex justify="space-between" flex="1">
-              <InputGroup pr={6}>
+            <Center width="xl">
+              <InputGroup>
                 <InputLeftElement
                   pointerEvents="none"
-                  // children={<IoSearch color="gray.300" />}
+                  children={<IoSearch color="gray" />}
                 />
-                <Input type="tel" placeholder="Search" />
+                <Input variant="filled" placeholder="Search" />
               </InputGroup>
+            </Center>
+            <Flex justify="flex-end">
               {user ? (
                 <HStack spacing="3">
                   <Button size="sm" variant="ghost">
-                    Footfall
-                  </Button>
-                  <Button size="sm" variant="ghost">
-                    Favourites
+                    <IoNotificationsOutline size={24} />
                   </Button>
 
                   <Menu user={user} />
