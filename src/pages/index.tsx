@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
-import SignIn from "../Auth/SignIn";
+import Home from "../Home";
 
-const HomePage: NextPage = () => <SignIn />;
+const HomePage: NextPage = () => <Home />;
 
 export default HomePage;

@@ -1,14 +1,14 @@
 import React from "react";
-import { Container } from "../shared/components/templates";
+import { AppTemplate } from "../shared/components/templates";
 import { Heading } from "../shared/components/UI/atoms";
 import withAuthentication from "../shared/HOC/withAuthentication";
 
 const Home: React.FC = ({ user }: any) => {
   return (
-    <Container>
+    <AppTemplate>
       <Heading>Hello World {user.name}</Heading>
-    </Container>
+    </AppTemplate>
   );
 };
 
-export default withAuthentication(Home);
+export default withAuthentication(Home) as React.FC;
